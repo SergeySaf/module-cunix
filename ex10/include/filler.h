@@ -2,19 +2,12 @@
 #define _FILLER_H_
 
 
-typedef struct  map_s
+typedef struct  map_elem_s
 {
   int           h;
   int           w;
   char          **array;
-}               map_t;
-
-typedef struct  elem_s
-{
-  int           h;
-  int           w;
-  char          **array;
-}               elem_t;
+}               map_elem_t;
 
 typedef struct  pos_s
 {
@@ -25,8 +18,8 @@ typedef struct  pos_s
 typedef struct  req_s
 {
   char          symbol;
-  map_t         map;
-  elem_t        elem;
+  map_elem_t         map;
+  map_elem_t        elem;
 }               req_t;
 
 typedef struct  stream_s
@@ -50,11 +43,11 @@ void            read_input(filler_t* filler);
 /*Functions for parsing*/
 req_t*          parse_all(char *all);
 pos_t           parse_size(char *answer);
+int find_size(char res[32], char *buf, int start_pos);
 
 /*Functions for game logic*/
 void            start_game(filler_t *filler);
-pos_t           play(req_t *core, filler_t *filler);
-
+pos_t           play(req_t *core);
 /*Functions for printing*/
 void            print_pos(pos_t p);
 
