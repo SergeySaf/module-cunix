@@ -55,7 +55,7 @@ pos_t play(req_t *core)
   for(int i = 0; i < h; i++)
     for(int j = 0; j < w; j++)
      {
-      for(int q = 0; q <= 3; q++)
+      for(int q = 0; q <= 2; q++)
        {
           if(q == 0)
           {
@@ -67,17 +67,12 @@ pos_t play(req_t *core)
             res.x = j-random;
             res.y = i-random;
           }
-        /*  else if(q == 2)
-            {
-              res.x = j-random;
-              res.y = i+random;
-            }*/
-          else if (q == 3)
+          else if (q == 2)
             {
               res.x = j+random;
               res.y = i-random;
             }
-         
+
          if(check_free_space(&core->map, &core->elem, res) &&
             check_connection(&core->map, &core->elem, res, core->symbol))
         {
