@@ -39,21 +39,21 @@ void      destroy_filler(filler_t *filler)
    string_destroy(filler->current_stream);
 }
 
-void      create_req(req_t *req)
+void      create_core(req_t *core)
 {
-  req = (req_t*) malloc(sizeof(req_t));
+  core = (req_t*) malloc(sizeof(req_t));
 }
 
-void destroy_req(req_t *req)
+void destroy_core(req_t *core)
 {
-  for(int i = 0; i < req->map.h; i++)
-   free(req->map.array[i]);
-  free(req->map.array);
+  for(int i = 0; i < core->map.h; i++)
+   free(core->map.array[i]);
+  free(core->map.array);
 
-  for(int i = 0; i < req->elem.h; i++)
-   free(req->elem.array[i]);
-  free(req->elem.array);
+  for(int i = 0; i < core->elem.h; i++)
+   free(core->elem.array[i]);
+  free(core->elem.array);
 
-  free(req);
-  req = NULL;
+  free(core);
+  core  = NULL;
 }

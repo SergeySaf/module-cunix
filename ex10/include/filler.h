@@ -18,8 +18,8 @@ typedef struct  pos_s
 typedef struct  req_s
 {
   char          symbol;
-  map_elem_t         map;
-  map_elem_t        elem;
+  map_elem_t    map;
+  map_elem_t    elem;
 }               req_t;
 
 typedef struct  stream_s
@@ -56,6 +56,6 @@ int             set_nonblocking(int fd);
 void            fatal(char *msg);
 void            create_filler(filler_t *filler);
 void            destroy_filler(filler_t *filler);
-void            create_req(req_t *req);
-void            destroy_req(req_t *req);
+void            create_core(req_t *core);
+void            destroy_core(req_t *core);
 #endif // _FILLER_H_

@@ -23,7 +23,7 @@ void start_game(filler_t *filler)
 {
   struct timeval timeout;
 
-  req_t   *req;
+  req_t   *core;
   fd_set  rfds;
   fd_set  wfds;
   pos_t   p;
@@ -32,7 +32,7 @@ void start_game(filler_t *filler)
   fprintf(logg, "start game\n");
   fclose(logg);
 
-  create_req(req);
+  create_core(core);
   set_nonblocking(0);
   while(42)
   {
@@ -61,10 +61,10 @@ void start_game(filler_t *filler)
 
     if (FD_ISSET(0, &rfds))
     {
-      req = read_request(filler);
-      if(req != NULL)
+      core = read_request(filler);
+      if(core != NULL)
       {
-        p = play(req);
+        p = play(core);
         filler->status = ANS;
       }
     }
@@ -75,7 +75,7 @@ void start_game(filler_t *filler)
       filler->status = REQ;
       string_destroy(filler->current_stream);
       filler->current_stream = NULL;
-      destroy_req(req);
+      destroy_core(core);
     }
   }
 }
