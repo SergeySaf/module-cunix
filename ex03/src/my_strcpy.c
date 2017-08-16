@@ -8,9 +8,8 @@ char *my_strcpy(char *dest, const char *src)
     dest[i] = src[i];
     i++;
   }
-  for(; dest[i] != '\0'; i++)
-  {
+
   dest[i] = '\0';
-  }
+
   return dest;
 }
